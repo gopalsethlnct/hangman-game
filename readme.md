@@ -2,8 +2,9 @@
 ## Rules
 1. In every Game you have one word to guess.
 2. For each character game shows a blank line
-3. For every right guess repected blank line shows the character.
-4. For every wrong guess you lost one live and after 5 loss game is over and man is Hanged.
+3. For every right guess respected blank line shows the matched character.
+4. You only have 5 lives.
+5. For every wrong guess you lost one live and after 5 losses game is over and Man is hanged.
 
     
 
@@ -13,12 +14,21 @@
 
 
 # Steps to Run This Project Locally
+
 1. Clone this repo in your machine.
     
    ``` 
    git clone https://github.com/gopalsethlnct/hangman-game 
    ````
-    
+   
+2. Install JRE using following command.
+   ```
+    sudo apt install default-jre
+   ```
+3. Install JDk.
+   ```
+   sudo apt install default-jdk
+   ```
 2. Open folder in your favourite java editor.
 
 3. Compile and Run.
