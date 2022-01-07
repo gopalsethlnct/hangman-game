@@ -817,7 +817,7 @@ public class hangman extends javax.swing.JFrame {
 
     private void UbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbuttonActionPerformed
         // TODO add your handling code here:
-        if (print('c') != 0) {
+        if (print('u') != 0) {
             if (match == 0) {
                 Ubutton.setBackground(Color.red);
             } else {
