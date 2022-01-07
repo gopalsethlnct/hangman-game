@@ -15,73 +15,75 @@ import javax.swing.JOptionPane;
  * @author Gopal
  */
 public class hangman extends javax.swing.JFrame {
+
     //variables
-    int totalclicked=0;
-    String word="";
-    int count_char=0;
-    int live=5;
-    String temp="";
-    int match=0;
-    char btnclicked[]=new char[26];
-    int S=0; 
+    int totalclicked = 0;
+    String word = "";
+    int count_char = 0;
+    int live = 5;
+    String temp = "";
+    int match = 0;
+    char btnclicked[] = new char[26];
+    int S = 0;
+
     //print function all main logic of code is here
-   public int print(char ch){
-       //check if button is already clicked or not
-       for(int i=0;i<totalclicked;i++){
-           if(btnclicked[i]==ch){
-               return 0;
-           }
-       }
-       //if not clicked then 
-       btnclicked[totalclicked++]=ch;
-       
-       int flag=0;
-       char emp[] =new char[S*2];
-       //updating character guesed and storing it
-        for(int i=0;i<S*2;i+=2){
-           emp[i]=temp.charAt(i);
-           emp[i+1]=' ';
-       }
+    public int print(char ch) {
+        //check if button is already clicked or not
+        for (int i = 0; i < totalclicked; i++) {
+            if (btnclicked[i] == ch) {
+                return 0;
+            }
+        }
+        //if not clicked then 
+        btnclicked[totalclicked++] = ch;
+
+        int flag = 0;
+        char emp[] = new char[S * 2];
+        //updating character guesed and storing it
+        for (int i = 0; i < S * 2; i += 2) {
+            emp[i] = temp.charAt(i);
+            emp[i + 1] = ' ';
+        }
         //checking character guesed wwith original word
-        for(int i=0;i<S;i++){
-            if(word.charAt(i)==ch){
-                   emp[i*2]=word.charAt(i);
-                   count_char++;
-                   flag=1;
-                   match=1;  
+        for (int i = 0; i < S; i++) {
+            if (word.charAt(i) == ch) {
+                emp[i * 2] = word.charAt(i);
+                count_char++;
+                flag = 1;
+                match = 1;
             }
         }
         //decreasing live if wrong guess
-        if(flag==0&&live>0){
-            lives.setText(--live+"");
+        if (flag == 0 && live > 0) {
+            lives.setText(--live + "");
         }
         //if wrong guessed andd lost all lives
-        if(flag==0&&live==0){
-         JFrame jFrame = new JFrame();
-        JOptionPane.showMessageDialog(jFrame, "Game over! start new game");
-         hangman a= new hangman();
-        a.setVisible(true);
-        this.dispose();
-       
+        if (flag == 0 && live == 0) {
+            JFrame jFrame = new JFrame();
+            JOptionPane.showMessageDialog(jFrame, "Game over! start new game");
+            hangman a = new hangman();
+            a.setVisible(true);
+            this.dispose();
+
         }
-        
-       temp=new String(emp);
-       String string = new String(emp);
-       
-       //display guessed character to the text area
-       DisplayText1.setText(string)
-               ;
-       //if word guessed correctly 
-       if(count_char==S){
-              JFrame jFrame = new JFrame();
-        JOptionPane.showMessageDialog(jFrame, "Congratulation! YOU WIN");
-        hangman a= new hangman();
-        a.setVisible(true);
-        this.dispose();
+
+        temp = new String(emp);
+        String string = new String(emp);
+
+        //display guessed character to the text area
+        DisplayText1.setText(string);
+        //if word guessed correctly 
+        if (count_char == S) {
+            JFrame jFrame = new JFrame();
+            JOptionPane.showMessageDialog(jFrame, "Congratulation! YOU WIN");
+            hangman a = new hangman();
+            a.setVisible(true);
+            this.dispose();
         }
-       return 1;
-   }
-       public hangman() {
+        return 1;
+    }
+
+    public hangman() {
         initComponents();
     }
 
@@ -389,79 +391,86 @@ public class hangman extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1067, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(Gbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Hbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Ibutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Jbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(19, 19, 19)
-                                    .addComponent(Kbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Lbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(Abutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Bbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Cbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Dbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(19, 19, 19)
-                                    .addComponent(Ebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(Fbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Mbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Nbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Obutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(Pbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Qbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Rbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Ybutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Zbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Sbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Tbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(Ubutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Vbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19)
-                                .addComponent(Wbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Xbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(239, 239, 239)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DisplayText1)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(Gbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Hbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Ibutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Jbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(19, 19, 19)
+                                                .addComponent(Kbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Lbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(Abutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Bbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Cbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Dbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(19, 19, 19)
+                                                .addComponent(Ebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Fbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lives, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(121, 121, 121))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(66, 66, 66)
-                                .addComponent(quitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(84, 84, 84))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(lives, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(Mbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Nbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Obutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(25, 25, 25)
+                                        .addComponent(Pbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Qbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Rbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(Ybutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Zbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(Sbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Tbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Ubutton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Vbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(19, 19, 19)
+                                        .addComponent(Wbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Xbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(239, 239, 239)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DisplayText1)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(quitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(69, 69, 69))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,18 +478,6 @@ public class hangman extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(DisplayText1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lives, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(quitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(94, 94, 94))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -498,14 +495,23 @@ public class hangman extends javax.swing.JFrame {
                             .addComponent(Jbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Kbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Lbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)
+                        .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Mbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Nbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Obutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Pbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Qbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Rbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Rbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(DisplayText1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lives, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Sbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -518,7 +524,13 @@ public class hangman extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Ybutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Zbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(75, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(quitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(210, 210, 210))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -543,34 +555,33 @@ public class hangman extends javax.swing.JFrame {
 //code for character buttons
     private void NbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NbuttonActionPerformed
         // TODO add your handling code here:
-       
-         if( print('n')!=0){
-         if(match==0){
-             Nbutton.setBackground(Color.red);
-         }
-         else{
-              match=0;
-             Nbutton.setBackground(Color.green);
-         }
-         }
+
+        if (print('n') != 0) {
+            if (match == 0) {
+                Nbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Nbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_NbuttonActionPerformed
- //start new game button
+    //start new game button
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-        //start new games       
+        //start new games     
         HangmanGame G = new HangmanGame();
-        word=G.getWord();   
-        S=word.length();
-        
-       char emp[] =new char[S*2];    
-       for(int i=0;i<S*2;i+=2){
-           emp[i]='_';
-           emp[i+1]=' ';
-       }
-       
-       temp=new String(emp);
-       String string = new String(emp);
-       DisplayText1.setText(string);
+        word = G.getWord();
+        S = word.length();
+
+        char emp[] = new char[S * 2];
+        for (int i = 0; i < S * 2; i += 2) {
+            emp[i] = '_';
+            emp[i + 1] = ' ';
+        }
+
+        temp = new String(emp);
+        String string = new String(emp);
+        DisplayText1.setText(string);
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void DisplayText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayText1ActionPerformed
@@ -579,336 +590,311 @@ public class hangman extends javax.swing.JFrame {
 
     private void AbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbuttonActionPerformed
         // TODO add your handling code here:
-       if( print('a')!=0){
-          if(match==0){
-             Abutton.setBackground(Color.red);
-         }
-         else{
-               match=0;
-             Abutton.setBackground(Color.green);
-         }
-       }
+        if (print('a') != 0) {
+            if (match == 0) {
+                Abutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Abutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_AbuttonActionPerformed
 
     private void BbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuttonActionPerformed
         // TODO add your handling code here:
-      if( print('b')!=0){
-          if(match==0){
-             Bbutton.setBackground(Color.red);
-         }
-         else{
-              match=0;
-             Bbutton.setBackground(Color.green);
-         }
-      }
+        if (print('b') != 0) {
+            if (match == 0) {
+                Bbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Bbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_BbuttonActionPerformed
 
     private void CbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbuttonActionPerformed
         // TODO add your handling code here:
-      if( print('c')!=0){
-          if(match==0){
-             Cbutton.setBackground(Color.red);
-         }
-         else{
-                 match=0;
-             Cbutton.setBackground(Color.green);
-         }
-      }
+        if (print('c') != 0) {
+            if (match == 0) {
+                Cbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Cbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_CbuttonActionPerformed
 
     private void DbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DbuttonActionPerformed
         // TODO add your handling code here:
-        if( print('d')!=0){
-          if(match==0){
-             Dbutton.setBackground(Color.red);
-         }
-         else{
-             match=0;
-             Dbutton.setBackground(Color.green);
-         }
+        if (print('d') != 0) {
+            if (match == 0) {
+                Dbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Dbutton.setBackground(Color.green);
+            }
         }
     }//GEN-LAST:event_DbuttonActionPerformed
 
     private void EbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('e')!=0){
-           if(match==0){
-             Ebutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Ebutton.setBackground(Color.green);
-         }
-         }
+        if (print('e') != 0) {
+            if (match == 0) {
+                Ebutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Ebutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_EbuttonActionPerformed
 
     private void FbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('f')!=0){
-           if(match==0){
-             Fbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Fbutton.setBackground(Color.green);
-         }
-         }
+        if (print('f') != 0) {
+            if (match == 0) {
+                Fbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Fbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_FbuttonActionPerformed
 
     private void GbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('g')!=0){
-           if(match==0){
-             Gbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Gbutton.setBackground(Color.green);
-         }
-         }
+        if (print('g') != 0) {
+            if (match == 0) {
+                Gbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Gbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_GbuttonActionPerformed
 
     private void HbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('h')!=0){
-           if(match==0){
-             Hbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Hbutton.setBackground(Color.green);
-         }
-         }
+        if (print('h') != 0) {
+            if (match == 0) {
+                Hbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Hbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_HbuttonActionPerformed
 
     private void IbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('i')!=0){
-           if(match==0){
-             Ibutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Ibutton.setBackground(Color.green);
-         }
-         }
+        if (print('i') != 0) {
+            if (match == 0) {
+                Ibutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Ibutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_IbuttonActionPerformed
 
     private void JbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('j')!=0){
-           if(match==0){
-             Jbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Jbutton.setBackground(Color.green);
-         }
-         }
+        if (print('j') != 0) {
+            if (match == 0) {
+                Jbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Jbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_JbuttonActionPerformed
 
     private void KbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KbuttonActionPerformed
         // TODO add your handling code here:
-        if( print('k')!=0){
-           if(match==0){
-             Kbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Kbutton.setBackground(Color.green);
-         }
+        if (print('k') != 0) {
+            if (match == 0) {
+                Kbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Kbutton.setBackground(Color.green);
+            }
         }
     }//GEN-LAST:event_KbuttonActionPerformed
 
     private void LbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('l')!=0){
-           if(match==0){
-             Lbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Lbutton.setBackground(Color.green);
-         }
-         }
+        if (print('l') != 0) {
+            if (match == 0) {
+                Lbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Lbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_LbuttonActionPerformed
 
     private void MbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MbuttonActionPerformed
         // TODO add your handling code here:M');
-          if( print('m')!=0){
-           if(match==0){
-             Mbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Mbutton.setBackground(Color.green);
-         }
-          }
+        if (print('m') != 0) {
+            if (match == 0) {
+                Mbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Mbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_MbuttonActionPerformed
 
     private void ObuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObuttonActionPerformed
         // TODO add your handling code here:
-          if( print('o')!=0){
-           if(match==0){
-             Obutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Obutton.setBackground(Color.green);
-         }
-          }
+        if (print('o') != 0) {
+            if (match == 0) {
+                Obutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Obutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_ObuttonActionPerformed
 
     private void PbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PbuttonActionPerformed
         // TODO add your handling code here:
-          if( print('p')!=0){
-           if(match==0){
-             Pbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Pbutton.setBackground(Color.green);
-         }
-         }
+        if (print('p') != 0) {
+            if (match == 0) {
+                Pbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Pbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_PbuttonActionPerformed
 
     private void QbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QbuttonActionPerformed
         // TODO add your handling code here:
-      if( print('q')!=0){
-           if(match==0){
-             Qbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Qbutton.setBackground(Color.green);
-         }
-      }
+        if (print('q') != 0) {
+            if (match == 0) {
+                Qbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Qbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_QbuttonActionPerformed
 
     private void RbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RbuttonActionPerformed
         // TODO add your handling code here:
-       if( print('r')!=0){
-           if(match==0){
-             Rbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Rbutton.setBackground(Color.green);
-         }
-       }
+        if (print('r') != 0) {
+            if (match == 0) {
+                Rbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Rbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_RbuttonActionPerformed
 
     private void SbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('s')!=0){
-           if(match==0){
-             Sbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Sbutton.setBackground(Color.green);
-         }
-         }
+        if (print('s') != 0) {
+            if (match == 0) {
+                Sbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Sbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_SbuttonActionPerformed
 
     private void TbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TbuttonActionPerformed
-      if( print('t')!=0){
-           if(match==0){
-             Tbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Tbutton.setBackground(Color.green);
-         }
-      }
+        if (print('t') != 0) {
+            if (match == 0) {
+                Tbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Tbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_TbuttonActionPerformed
 
     private void UbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbuttonActionPerformed
         // TODO add your handling code here:
-      if( print('c')!=0){
-           if(match==0){
-             Ubutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Ubutton.setBackground(Color.green);
-         }
-      }
+        if (print('c') != 0) {
+            if (match == 0) {
+                Ubutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Ubutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_UbuttonActionPerformed
 
     private void VbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VbuttonActionPerformed
         // TODO add your handling code here:
-        
-         if( print('v')!=0){
-           if(match==0){
-             Vbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Vbutton.setBackground(Color.green);
-         }
-         }
+
+        if (print('v') != 0) {
+            if (match == 0) {
+                Vbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Vbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_VbuttonActionPerformed
 
     private void WbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WbuttonActionPerformed
         // TODO add your handling code here:
-          if( print('w')!=0){
-           if(match==0){
-             Wbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Wbutton.setBackground(Color.green);
-         }
-          }
+        if (print('w') != 0) {
+            if (match == 0) {
+                Wbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Wbutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_WbuttonActionPerformed
 
     private void XbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XbuttonActionPerformed
         // TODO add your handling code here:
-        if( print('x')!=0){
-           if(match==0){
-             Xbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Xbutton.setBackground(Color.green);
-         }
+        if (print('x') != 0) {
+            if (match == 0) {
+                Xbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Xbutton.setBackground(Color.green);
+            }
         }
     }//GEN-LAST:event_XbuttonActionPerformed
 
     private void YbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YbuttonActionPerformed
         // TODO add your handling code here:
-         if( print('y')!=0){
-           if(match==0){
-             Ybutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Ybutton.setBackground(Color.green);
-         }
-         }
+        if (print('y') != 0) {
+            if (match == 0) {
+                Ybutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Ybutton.setBackground(Color.green);
+            }
+        }
     }//GEN-LAST:event_YbuttonActionPerformed
 
     private void ZbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZbuttonActionPerformed
         // TODO add your handling code here:
-        if( print('c')!=0){
-         
-           if(match==0){
-             Zbutton.setBackground(Color.red);
-         }
-         else{
-                match=0;
-             Zbutton.setBackground(Color.green);
-         }
+        if (print('c') != 0) {
+
+            if (match == 0) {
+                Zbutton.setBackground(Color.red);
+            } else {
+                match = 0;
+                Zbutton.setBackground(Color.green);
+            }
         }
-         // Zbutton.setEnabled(false);
+        // Zbutton.setEnabled(false);
     }//GEN-LAST:event_ZbuttonActionPerformed
 //exit button
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
         // TODO add your handling code here:
-         JFrame jFrame = new JFrame();
+        JFrame jFrame = new JFrame();
         JOptionPane.showMessageDialog(jFrame, "Thanks for playing");
-           System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_quitButtonActionPerformed
 
     /**

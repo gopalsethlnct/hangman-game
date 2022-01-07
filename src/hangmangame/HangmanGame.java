@@ -9,21 +9,24 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-/**
+/** 
  *
  * @author Gopal
  */
 public class HangmanGame {
- String word;
+
+    String word;
+
     /**
      * @param args the command line arguments
      */
-   public String getWord(){
-       return word;
-   }
-    public HangmanGame(){
-        
-        try {         
+    public String getWord() {
+        return word;
+    }
+
+    public HangmanGame() {
+
+        try {
 
             URL url = new URL("https://random-word-api.herokuapp.com/word?number=1");
             //setting url connction
@@ -43,15 +46,14 @@ public class HangmanGame {
                 Scanner scanner = new Scanner(url.openStream());
 
                 informationString.append(scanner.nextLine());
-               //storing word into word variable
+                //storing word into word variable
                 scanner.close();
-                word=informationString.toString().split("\"")[1].toString();
+                word = informationString.toString().split("\"")[1].toString();
                 System.out.println(word);
-        }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-         
-    
-}
+
+    }
 }
