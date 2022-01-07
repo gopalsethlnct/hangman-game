@@ -15,7 +15,9 @@
 # Steps to Run This Project Locally
 1. Clone this repo in your machine.
     
-   ``` git clone https://github.com/gopalsethlnct/hangman-game ````
+   ``` 
+   git clone https://github.com/gopalsethlnct/hangman-game 
+   ````
     
 2. Open folder in your favourite java editor.
 
@@ -25,7 +27,7 @@
 
 
 # To play Hangman game
-- Dawnload JAR file from the link.
+- Download JAR file from the link.
 [hangman.jar](https://drive.google.com/file/d/1A1D4vYVxARKK_yISJQrgb_d76Yqov7Z-/view?usp=sharing)
 - Double click and play the game.
 
