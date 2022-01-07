@@ -878,7 +878,7 @@ public class hangman extends javax.swing.JFrame {
 
     private void ZbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZbuttonActionPerformed
         // TODO add your handling code here:
-        if (print('c') != 0) {
+        if (print('z') != 0) {
 
             if (match == 0) {
                 Zbutton.setBackground(Color.red);
